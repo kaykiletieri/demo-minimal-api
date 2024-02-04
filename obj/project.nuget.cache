@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "qW/X9dT7W8l80jGi2hkppWec7p91oZ3c8fJFcnIfA1PDexEXRZTZJWWgJjRwJTxpg1c/05Ll/vEli2a7PlBWNQ==",
+  "dgSpecHash": "8kpgs30A9k/TkmGRhN9OSaZriLISQi5cnTlRUC9zLrCrVAt8LsLzXP8PS52yN41MbnNxaWhb5WEL/7RZ3wLFdA==",
   "success": true,
   "projectFilePath": "C:\\Users\\kayki\\source\\repos\\DemoMinimalAPI\\DemoMinimalAPI.csproj",
   "expectedPackageFiles": [
@@ -28,6 +28,7 @@
     "C:\\Users\\kayki\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\kayki\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\kayki\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.5\\microsoft.visualstudio.azure.containers.tools.targets.1.19.5.nupkg.sha512",
+    "C:\\Users\\kayki\\.nuget\\packages\\minivalidation\\0.9.0\\minivalidation.0.9.0.nupkg.sha512",
     "C:\\Users\\kayki\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\kayki\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.4\\sqlitepclraw.bundle_e_sqlite3.2.1.4.nupkg.sha512",
     "C:\\Users\\kayki\\.nuget\\packages\\sqlitepclraw.core\\2.1.4\\sqlitepclraw.core.2.1.4.nupkg.sha512",

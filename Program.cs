@@ -2,6 +2,7 @@ using DemoMinimalAPI.Data;
 using DemoMinimalAPI.Extensions;
 using DemoMinimalAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using MiniValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,10 +40,16 @@ app.MapGet("/suppliers/{id}", async (
 app.MapPost("/suppliers", async (
     ApplicationDbContext context, Supplier supplier) =>
     {
+        if (!MiniValidator.TryValidate(supplier, out var errors))
+            return Results.ValidationProblem(errors);
+
         context.Suppliers.Add(supplier);
-        await context.SaveChangesAsync();
-        return Results.Created($"/suppliers/{supplier.Id}", supplier);
+        var result = await context.SaveChangesAsync();
+        return result > 0
+            ? Results.Created($"/suppliers/{supplier.Id}", supplier)
+            : Results.BadRequest("An error occurred while saving the record");
     })
+    .ProducesValidationProblem()
     .Produces<Supplier>(StatusCodes.Status201Created)
     .Produces(StatusCodes.Status400BadRequest)
     .WithName("CreateSupplier")
