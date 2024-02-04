@@ -28,7 +28,7 @@ app.MapGet("/suppliers", async (
 
 app.MapGet("/suppliers/{id}", async (
     ApplicationDbContext context, Guid id) =>
-    await context.Suppliers.AsNoTracking().FirstOrDefaultAsync(s => s.Id == id)
+    await context.Suppliers.AsNoTracking().FirstOrDefaultAsync(s => s.Id == id && s.Active == true)
         is Supplier supplier 
             ? Results.Ok(supplier) 
             : Results.NotFound())
@@ -47,7 +47,7 @@ app.MapPost("/suppliers", async (
     .Produces(StatusCodes.Status400BadRequest)
     .WithName("CreateSupplier")
     .WithTags("Suppliers");
-
+/*
 app.MapPut("/suppliers/{id}", async (
     ApplicationDbContext context, Guid id, Supplier supplier) =>
     {
@@ -62,11 +62,11 @@ app.MapPut("/suppliers/{id}", async (
     })
     .WithName("UpdateSupplier")
     .WithTags("Suppliers");
-
+*/
 app.MapDelete("/suppliers/{id}", async (
     ApplicationDbContext context, Guid id) =>
     {
-        var supplier = await context.Suppliers.FindAsync(id);
+        var supplier = await context.Suppliers.FirstOrDefaultAsync(s => s.Id == id && s.Active == true);
         if (supplier is null)
         {
             return Results.NotFound();
