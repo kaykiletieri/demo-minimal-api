@@ -32,16 +32,4 @@ public class ApplicationDbContext : DbContext
      
         base.OnModelCreating(modelBuilder);
     }
-
-    public void SeedData()
-    {
-        if (Suppliers.Any()) return;
-
-        Suppliers.AddRange(
-            new Supplier { Name = "Fornecedor Teste 1", Document = "123456789", Active = true },
-            new Supplier { Name = "Fornecedor Teste 2", Document = "987654321", Active = true }
-        );
-
-        SaveChanges();
-    }
 }

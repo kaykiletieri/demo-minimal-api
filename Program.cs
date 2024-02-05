@@ -28,7 +28,7 @@ app.MapGet("/suppliers", async (
     .WithTags("Suppliers");
 
 app.MapGet("/suppliers/{id}", async (
-    ApplicationDbContext context, Guid id) =>
+    ApplicationDbContext context, long id) =>
     await context.Suppliers.AsNoTracking().FirstOrDefaultAsync(s => s.Id == id && s.Active == true)
         is Supplier supplier 
             ? Results.Ok(supplier) 
@@ -57,7 +57,7 @@ app.MapPost("/suppliers", async (
     .WithTags("Suppliers");
 
 app.MapPut("/suppliers/{id}", async (
-    ApplicationDbContext context, Guid id, Supplier supplier) =>
+    ApplicationDbContext context, long id, Supplier supplier) =>
     {
         var existingSupplier = await context.Suppliers.AsNoTracking().FirstOrDefaultAsync(s => s.Id == id && s.Active == true);
         if (existingSupplier is null) return Results.NotFound();
@@ -80,7 +80,7 @@ app.MapPut("/suppliers/{id}", async (
     .WithTags("Suppliers");
 
 app.MapDelete("/suppliers/{id}", async (
-    ApplicationDbContext context, Guid id) =>
+    ApplicationDbContext context, long id) =>
     {
         var supplier = await context.Suppliers.FirstOrDefaultAsync(s => s.Id == id && s.Active == true);
         if (supplier is null) return Results.NotFound();
