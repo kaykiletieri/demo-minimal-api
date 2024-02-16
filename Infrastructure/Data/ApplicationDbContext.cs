@@ -1,11 +1,11 @@
 ﻿using DemoMinimalAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DemoMinimalAPI.Data;
+namespace DemoMinimalAPI.Infrastructure.Data;
 
 public class ApplicationDbContext : DbContext
 {
-   public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
     }
 
@@ -29,7 +29,7 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<Supplier>()
             .Property(s => s.Active)
             .IsRequired();
-     
+
         base.OnModelCreating(modelBuilder);
     }
 }

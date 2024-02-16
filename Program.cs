@@ -1,5 +1,5 @@
-using DemoMinimalAPI.Data;
-using DemoMinimalAPI.Extensions;
+using DemoMinimalAPI.Infrastructure.Data;
+using DemoMinimalAPI.Infrastructure.Extensions;
 using DemoMinimalAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using MiniValidation;
@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwagger();
 builder.Services.AddEntityFramework();
+builder.Services.AddAutoMapper();
 
 var app = builder.Build();
 

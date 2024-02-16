@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using DemoMinimalAPI.Data;
 using Microsoft.OpenApi.Models;
+using DemoMinimalAPI.Infrastructure.Data;
 
-namespace DemoMinimalAPI.Extensions;
+namespace DemoMinimalAPI.Infrastructure.Extensions;
 
 public static class DataExtensions
 {
-    public static IServiceCollection AddEntityFramework (this IServiceCollection services)
+    public static IServiceCollection AddEntityFramework(this IServiceCollection services)
     {
         services.AddDbContext<ApplicationDbContext>(options =>
         {
@@ -31,6 +31,13 @@ public static class DataExtensions
                 }
             });
         });
+
+        return services;
+    }
+
+    public static IServiceCollection AddAutoMapper(this IServiceCollection services)
+    {
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         return services;
     }
